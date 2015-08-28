@@ -1,0 +1,18 @@
+# eHR Project Webapp 
+
+
+## Help the project
+__Install__
+
+    一、在Eclipse中导该项目
+
+
+    二、创建MySQL数据库ehr，并导入data/ehr.sql数据
+
+
+    三、修改 src\main\resources\applicationContext-root.xml 中的数据库连接
+
+
+    四、发布并运行
+
+
