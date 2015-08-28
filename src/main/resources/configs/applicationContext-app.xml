@@ -19,6 +19,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<import resource="classpath*:/META-INF/spring/macula-*-app.xml" />
+	<import resource="classpath*:/META-INF/spring/ehr-*-app.xml" />
 
 	<bean id="abstractEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
@@ -54,10 +55,13 @@
 				<property name="defaultDataSource" ref="macula_dataSource" />
 				<property name="packagesToScan">
 					<array>
+						<!-- macula framework domains -->
 						<value>org.macula.base.app.domain</value>
 						<value>org.macula.base.security.domain</value>
 						<value>org.macula.base.data.domain</value>
 						<value>org.macula.plugins.rule.domain</value>
+						<!-- EHR domains -->
+						<value>net.tenoner.ehr.saas.domain</value>
 					</array>
 				</property>
 			</bean>
