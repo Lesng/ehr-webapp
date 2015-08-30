@@ -62,6 +62,7 @@
 						<value>org.macula.plugins.rule.domain</value>
 						<!-- EHR domains -->
 						<value>net.tenoner.ehr.saas.domain</value>
+						<value>net.tenoner.ehr.performance.domain</value>
 					</array>
 				</property>
 			</bean>

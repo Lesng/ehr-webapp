@@ -16,6 +16,8 @@
 		<macula.plugins.version>3.0.0-SNAPSHOT</macula.plugins.version>
 		<spring.version>4.1.6.RELEASE</spring.version>
 		<flying-saucer.version>9.0.6</flying-saucer.version>
+		<servlet.version>3.0.1</servlet.version>
+		<jta.version>1.1</jta.version>
 	</properties>
 
 	<repositories>
@@ -70,6 +72,19 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- J2EE -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>${jta.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.macula.plugins</groupId>
