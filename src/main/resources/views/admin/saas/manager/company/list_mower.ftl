@@ -19,7 +19,7 @@
 	<#assign code="company-list" />
 	<@ui.panel>
 		<@ui.panel_head>
-			<div class="col-xs-12 col-md-12">
+			<div class="col-xs-12 col-md-6 btn-group">
 				<a id="add-action-${code}" class="btn btn-default" data-toggle="pushBreadcrumb" data-label="新增" data-page="admin/saas/manager/company/create">
 				    <i class="fa fa-plus-circle fa-lg"></i>
 				    新增
@@ -33,6 +33,12 @@
 				    删除
 				</a>
 			</div>
+			<div class="col-xs-12 col-md-offset-2 col-md-4">
+				<div class="input-group">
+					<input type="text" class="form-control">
+					<span class="input-group-addon"><i class="fa fa-search"></i></span>
+	            </div>
+            </div>
 		</@ui.panel_head>
 		<@ui.panel_body>
 			<table id="list-${code}" class="table table-striped table-bordered table-hover" width="100%"
