@@ -28,7 +28,7 @@
 				    <i class="fa fa-pencil fa-lg"></i>
 				    编辑
 				</a>
-				<a id="delete-action-${code}" class="btn btn-danger">
+				<a id="delete-action-${code}" class="btn btn-default" data-label="删除">
 				    <i class="fa fa-trash-o fa-lg"></i>
 				    删除
 				</a>

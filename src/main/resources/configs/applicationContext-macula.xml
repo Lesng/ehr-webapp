@@ -99,6 +99,9 @@
 				<entry key="getDataParams">
 					<bean class="org.macula.base.mvc.DataParamsMethodModel" />
 				</entry>
+				<entry key="getMenuBreadcrumb">
+					<bean class="org.macula.base.mvc.MenuBreadcrumbMethod" />
+				</entry>
 			</map>
 		</property>
 	</bean>
