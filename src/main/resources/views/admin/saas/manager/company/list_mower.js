@@ -43,6 +43,26 @@ var RegistedCompanyList = (function($) {
     	});
     };
 
+    var _onSearchAction = function(){
+    	$('#search-btn-' + code).click(function(e) {
+	        var dt = $(table).DataTable();
+	        
+	        dt.ajax.setParams({
+	        	q: $('#search-text-' + code).val()
+	        });
+	        dt.ajax.reload();
+    	});
+    	
+    	$('#search-text-' + code).keypress(function(e) {  
+    	    // 回车键事件  
+    		if(e.which == 13) {  
+    			$('#search-btn-' + code).click();  
+    		}  
+    	}); 
+    };
+    
+    
+    
     // public functions
     return {
         //main function
@@ -50,6 +70,7 @@ var RegistedCompanyList = (function($) {
             //initialize here something.
             _oDeleteAction();
             _onEditAction();
+            _onSearchAction();
         }
     };
 }(jQuery));

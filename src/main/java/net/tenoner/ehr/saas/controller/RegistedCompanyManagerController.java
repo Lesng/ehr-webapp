@@ -11,12 +11,13 @@ import org.macula.core.mvc.annotation.FormBean;
 import org.macula.core.mvc.annotation.OpenApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RegistedCompanyManagerController extends AdminSaasManagerController {
@@ -31,8 +32,8 @@ public class RegistedCompanyManagerController extends AdminSaasManagerController
 
 	@RequestMapping(value = "/company/datas", method = RequestMethod.GET)
 	@OpenApi
-	public Page<RegistedCompany> getCompanys() {
-		return new PageImpl<RegistedCompany>(registedCompanyService.getAllCompanys());
+	public Page<RegistedCompany> getCompanys(@RequestParam(required = false, value = "q") String keywords, Pageable page) {
+		return registedCompanyService.findCompanys(keywords, page);
 	}
 
 	@RequestMapping(value = "/company/edit/{id}", method = RequestMethod.GET)
