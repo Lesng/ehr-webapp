@@ -59,13 +59,16 @@ var Layout = (function($, utils, window, document, undefined) {
     
     var initiateSideMenu = function() {
 
-        //Sidebar Toggler
+    	//Sidebar Toggler
         $(".sidebar-toggler").on('click', function() {
             $("#sidebar").toggleClass("hide");
             $("body").toggleClass("mu-sidebar-closed");
             $(".sidebar-toggler").toggleClass("active");
+            Cookie.createCookie('sidebar-toggler', $(".sidebar-toggler").hasClass('active'), 30);
+            Cookie.eraseCookie('sidebar-collapse');
             return false;
         });
+               
         //End Sidebar Toggler
 
         //Sidebar Collapse
@@ -101,9 +104,20 @@ var Layout = (function($, utils, window, document, undefined) {
                     });
                 }
             }
+            Cookie.createCookie('sidebar-collapse', b, 30);
+            Cookie.eraseCookie('sidebar-toggler');
             //Slim Scroll Handle
         });
         //End Sidebar Collapse
+        
+        // Recovert Sidebar Status
+        if(Cookie.readCookie('sidebar-collapse') == 'true') {
+        	$("#sidebar-collapse").click();
+        } 
+        if(Cookie.readCookie('sidebar-toggler') == 'true') {
+        	$(".sidebar-toggler").click();
+        }
+        // End Recovert Sidebar Status
 
         $(".sidebar-menu").on("clickMenu.mu.sidebarMenu", function(event) {
             event.preventDefault();

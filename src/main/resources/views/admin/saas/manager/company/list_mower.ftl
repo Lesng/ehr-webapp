@@ -19,7 +19,7 @@
 	<#assign code="company-list" />
 	<@ui.panel>
 		<@ui.panel_head>
-			<div class="col-xs-12 col-md-6 btn-group">
+			<div class="col-xs-12 col-md-6">
 				<a id="add-action-${code}" class="btn btn-default" data-toggle="pushBreadcrumb" data-label="新增" data-page="admin/saas/manager/company/create">
 				    <i class="fa fa-plus-circle fa-lg"></i>
 				    新增
