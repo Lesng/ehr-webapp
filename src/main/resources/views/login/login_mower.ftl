@@ -54,8 +54,8 @@
         <div class="container">
         	<div class="row">
             	<div class="col-xs-12 col-sm-12 col-md-12">
-                	<a href="index.html">
-                    	<img src="${resources_login}/app/images/logo-fp.png" style="width: 123px;height: 81px;" alt="infinitus">
+                	<a href="${base}">
+                    	<img src="${resources_login}/app/images/logo-fp.png" style="width: 123px;height: 81px;" alt="tenoner">
                 	</a>
                 	<b class="welcome"></b>
             	</div>
@@ -85,7 +85,7 @@
                                             扫描二维码安全登录
                                         </div>
                                         <div class="text-center">
-                                            <img src="${resources_login}/app/images/tdcode.png" style="width: 147px;height: 147px;" alt="infinitus">
+                                            <img src="${resources_login}/app/images/tdcode.png" style="width: 147px;height: 147px;" alt="tenoner">
                                         </div>
                                         <div class="text-center login-code-tool">
                                             <a href="javascript:;" class="text-muted">刷新二维码</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" class="text-muted">使用帮助</a>

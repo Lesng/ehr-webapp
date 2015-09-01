@@ -4,33 +4,7 @@ var Layout = (function($, utils, window, document, undefined) {
 
     // private functions & variables
     var resizeHeaderMenu = function() {
-        var $menu = $('.header-menu > .navbar-nav');
-        var $menuItems;
-
-        if (utils.getViewPort().width < resBreakpointMd) {
-            $menuItems = $menu.children('li:not(.dropdown)');
-            $menu.children('li.dropdown').find('ul.dropdown-menu').prepend($menuItems.attr('data-basic', true));
-        } else {
-            var $li = $menu.children('li.dropdown').find('ul.dropdown-menu > li');
-            $menuItems = $li.filter(function() {
-                return $(this).attr("data-basic") === 'true';
-            });
-
-            $menu.prepend($menuItems.removeAttr('data-basic'));
-        }
-
-        var $dropdownMenu = $menu.children('li.dropdown'),
-            $active = $dropdownMenu.find('li.active'),
-            $caret = $dropdownMenu.find('span.caret');
-
-        $dropdownMenu.removeClass('active');
-
-        if (!$active.length) {
-            $dropdownMenu.find('.dropdown-toggle').html($dropdownMenu.find('li:first a').text()).append(' ').append($caret);
-        } else {
-            $dropdownMenu.addClass('active');
-            $dropdownMenu.find('.dropdown-toggle').html($active.children('a').text()).append(' ').append($caret);
-        }
+        
     };
 
     
@@ -45,15 +19,15 @@ var Layout = (function($, utils, window, document, undefined) {
 
         var rcode = Cookie.readCookie('rcode'),
             mcode = Cookie.readCookie('mcode'),
-            selectedMenu = rcode ? $('.header-menu li:not(.dropdown) a[mcode="' + rcode + '"]') : $('.header-menu li:not(.dropdown):first a');
+            selectedMenu = rcode ? $('.header-menu li:not(.dropdown) a[mcode="' + 'DATA_RESOURCE_ADMIN' + '"]') : $('.header-menu li:not(.dropdown):first a');
 
         if (!rcode) {
             rcode = selectedMenu.attr('mcode');
         }
-
+        
         $(".sidebar-menu").sidebarMenu({
             'url': menuUrl,
-            "populate": false
+            "populate": true
         }).sidebarMenu('populate', rcode, mcode);
 
         selectedMenu.closest('li').addClass('active').siblings().removeClass('active');
@@ -74,11 +48,12 @@ var Layout = (function($, utils, window, document, undefined) {
             event.preventDefault();
 
             var $this = $(this),
-                rcode = $this.attr('mcode'),
-                purl = $this.attr('href');
+                rcode = $this.parents('li.dropdown').find('a:first').attr('mcode'),
+                mcode = $this.attr('mcode'),
+                purl = $this.attr('data-href');
             Cookie.createCookie('rcode', rcode, 1);
-            Cookie.eraseCookie('mcode');
-            window.location = purl;
+            Cookie.createCookie('mcode', mcode, 1);
+            window.location = base + '/' + purl;
         });
     };
     

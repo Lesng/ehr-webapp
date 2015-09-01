@@ -55,13 +55,15 @@
 </#macro>
 
 <#macro mower_admin_header_menu>
-    <div class="header-menu">
-        <ul class="nav navbar-nav">
-        	<#list adminMainMenu as mainMenu>
-            <li><a href="${base}/${(mainMenu.uri)!'admin'}" mcode="${(mainMenu.code)!""}">${(mainMenu.name)!""}</a></li>
-            </#list>
-        </ul>
-    </div>   
+	<div  class="header-menu yamm">
+		<ul class="nav navbar-nav" data-url="${base}/admin/menu/${sessionId!'session'}" rel="nbMenu">
+		<#list adminMainMenu as mainMenu>
+			<li>
+				<a href="#" data-toggle="menu" data-hover="dropdown" mcode="${(mainMenu.code)!""}" data-code="${(mainMenu.code)!""}">${(mainMenu.name)!""}<i class="fa fa-angle-down"></i></a>
+			</li>
+		</#list>
+		</ul>
+	</div>
 </#macro>
 
 
@@ -86,31 +88,6 @@
                             <a href="#" class="pull-left">基本信息</a>
                             <a href="#" class="pull-right">设置</a>
                         </li>
-                        
-                        <!--Theme Selector Area-->
-                        <li class="theme-area">
-                            <ul class="colorpicker" id="skin-changer">
-                                <li>
-                                    <a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="${resources_admin}/mower/${mowerVersion}/css/pink${minVersion!""}.css""></a>
-                                </li>
-                                <li>
-                                    <a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="${resources_admin}/mower/${mowerVersion}/css/darkred${minVersion!""}.css""></a>
-                                </li>
-                                 <li>
-                                    <a class="colorpick-btn" href="#" style="background-color:#585858;" rel="${resources_admin}/mower/${mowerVersion}/css/gray${minVersion!""}.css""></a>
-                                </li>
-                                <li>
-                                    <a class="colorpick-btn" href="#" style="background-color:#474544;" rel="${resources_admin}/mower/${mowerVersion}/css/black${minVersion!""}.css""></a>
-                                </li>                               
-                                 <li>
-                                    <a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="${resources_admin}/mower/${mowerVersion}/css/green${minVersion!""}.css""></a>
-                                </li>
-                                <li>
-                                    <a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="${resources_admin}/mower/${mowerVersion}/css/blue${minVersion!""}.css""></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--/Theme Selector Area-->
                         <li class="dropdown-footer">
                             <a href="<@macula.logoutURL />&forward=/login">退出</a>
                         </li>
@@ -227,13 +204,6 @@
         <!-- BEGIN SIDEBAR -->
         <div class="mu-sidebar-wrapper">
             <div class="mu-sidebar" id="sidebar">
-                <!-- Page Sidebar Header-->
-                <div class="sidebar-header-wrapper">
-                    <input type="text" class="searchinput">
-                    <i class="searchicon fa fa-search"></i>
-                    <div class="searchhelper">搜索菜单</div>
-                </div>
-                <!-- /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
                 <ul class="nav sidebar-menu" style="">
                 </ul>
