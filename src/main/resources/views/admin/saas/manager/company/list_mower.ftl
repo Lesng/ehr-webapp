@@ -19,19 +19,19 @@
 	<#assign code="company-list" />
 	<@ui.panel>
 		<@ui.panel_head>
-			<div class="col-xs-12 col-md-6">
-				<a id="add-action-${code}" class="btn btn-default" data-toggle="pushBreadcrumb" data-label="新增" data-page="admin/saas/manager/company/create">
+			<div id="actions-list-${code}" class="col-xs-12 col-md-6">
+				<button id="add-action-${code}" class="btn btn-default" data-toggle="pushBreadcrumb" data-label="新增" data-page="admin/saas/manager/company/create">
 				    <i class="fa fa-plus-circle fa-lg"></i>
 				    新增
-				</a>
-				<a id="edit-action-${code}" class="btn btn-default" data-label="编辑">
+				</button>
+				<button id="edit-action-${code}" class="btn btn-default" data-label="编辑" data-bind="enable: selectedRow" disabled>
 				    <i class="fa fa-pencil fa-lg"></i>
 				    编辑
-				</a>
-				<a id="delete-action-${code}" class="btn btn-default" data-label="删除">
+				</button>
+				<button id="delete-action-${code}" class="btn btn-default" data-label="删除" data-bind="enable: selectedRow" disabled>
 				    <i class="fa fa-trash-o fa-lg"></i>
 				    删除
-				</a>
+				</button>
 			</div>
 			<div class="col-xs-12 col-md-offset-2 col-md-4">
 				<div class="input-group">
