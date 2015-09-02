@@ -24,10 +24,12 @@
 		<@ui.panel>
 			<@ui.panel_head>
 				<div class="col-xs-12 col-md-12">
+					<@macula.preAuthorized url="/admin/saas/manager/company/save" method="POST">
 				    <button id="save-action-${code}" class="btn btn-primary">
 				        <i class="fa fa-check-circle fa-lg"></i>
 				        保存
 				    </button>
+				    </@macula.preAuthorized>
 				    <button id="cancel-action-${code}" class="btn btn-default" data-toggle="popBreadcrumb">
 				        <i class="fa fa-reply fa-lg"></i>
 				        取消
