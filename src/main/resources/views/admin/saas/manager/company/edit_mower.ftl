@@ -24,14 +24,14 @@
 		<@ui.panel>
 			<@ui.panel_head>
 				<div class="col-xs-12 col-md-12">
-				    <a id="save-action-${code}" class="btn btn-primary">
+				    <button id="save-action-${code}" class="btn btn-primary">
 				        <i class="fa fa-check-circle fa-lg"></i>
 				        保存
-				    </a>
-				    <a id="cancel-action-${code}" class="btn btn-default" data-toggle="popBreadcrumb">
+				    </button>
+				    <button id="cancel-action-${code}" class="btn btn-default" data-toggle="popBreadcrumb">
 				        <i class="fa fa-reply fa-lg"></i>
 				        取消
-				    </a>
+				    </button>
 				</div>
 			</@ui.panel_head>
 			<@ui.panel_body>

@@ -60,12 +60,14 @@ var Layout = (function($, utils, window, document, undefined) {
     var initiateSideMenu = function() {
 
     	//Sidebar Toggler
-        $(".sidebar-toggler").on('click', function() {
+        $(".sidebar-toggler").on('click', function(e) {
             $("#sidebar").toggleClass("hide");
             $("body").toggleClass("mu-sidebar-closed");
             $(".sidebar-toggler").toggleClass("active");
             Cookie.createCookie('sidebar-toggler', $(".sidebar-toggler").hasClass('active'), 30);
-            Cookie.eraseCookie('sidebar-collapse');
+            if(e) {
+            	Cookie.eraseCookie('sidebar-collapse');
+            }
             return false;
         });
                
@@ -73,7 +75,7 @@ var Layout = (function($, utils, window, document, undefined) {
 
         //Sidebar Collapse
         var b = $("#sidebar").hasClass("menu-compact");
-        $("#sidebar-collapse").on('click', function() {
+        $("#sidebar-collapse").on('click', function(e) {
             if (!$('#sidebar').is(':visible')) {
                 $("body").toggleClass("mu-sidebar-closed");
                 $("#sidebar").toggleClass("hide");
@@ -105,18 +107,20 @@ var Layout = (function($, utils, window, document, undefined) {
                 }
             }
             Cookie.createCookie('sidebar-collapse', b, 30);
-            Cookie.eraseCookie('sidebar-toggler');
+            if(e) {
+            	Cookie.eraseCookie('sidebar-toggler');
+            }
             //Slim Scroll Handle
         });
         //End Sidebar Collapse
         
         // Recovert Sidebar Status
-        if(Cookie.readCookie('sidebar-collapse') == 'true') {
-        	$("#sidebar-collapse").click();
-        } 
         if(Cookie.readCookie('sidebar-toggler') == 'true') {
         	$(".sidebar-toggler").click();
         }
+        if(Cookie.readCookie('sidebar-collapse') == 'true') {
+        	$("#sidebar-collapse").click();
+        } 
         // End Recovert Sidebar Status
 
         $(".sidebar-menu").on("clickMenu.mu.sidebarMenu", function(event) {
@@ -169,4 +173,5 @@ var Layout = (function($, utils, window, document, undefined) {
 
 $(document).ready(function() {
     Layout.init();
+    Cookie.createCookie('current-skin', '/ehr-webapp/resources/mower/20150902085904/admin/mower/1.1.1/css/gray.css', 1);
 });
