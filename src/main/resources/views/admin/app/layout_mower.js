@@ -72,10 +72,14 @@ var Layout = (function($, utils, window, document, undefined) {
         });
                
         //End Sidebar Toggler
-
+        
+        // Hidden Elements
+        $("#sidebar").find('.sidebar-header-wrapper').hide();
+        $("#favorite-toggler").hide();
+        // End Hidden Elements
+        
         //Sidebar Collapse
         var b = $("#sidebar").hasClass("menu-compact");
-        $("#sidebar").find('.sidebar-header-wrapper').hide();
         $("#sidebar-collapse").on('click', function(e) {
             if (!$('#sidebar').is(':visible')) {
                 $("body").toggleClass("mu-sidebar-closed");
