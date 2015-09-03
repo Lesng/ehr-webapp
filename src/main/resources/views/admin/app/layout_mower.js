@@ -168,7 +168,7 @@ var Layout = (function($, utils, window, document, undefined) {
 
             //Handle RTL SUpport for Changer CheckBox
             $("#skin-changer li a").click(function() {
-                Cookie.createCookie("current-skin", $(this).attr('rel'), 10);
+                Cookie.createCookie("current-skin-admin", $(this).attr('rel'), 10);
                 window.location.reload();
             });
         }
@@ -178,5 +178,4 @@ var Layout = (function($, utils, window, document, undefined) {
 
 $(document).ready(function() {
     Layout.init();
-    Cookie.createCookie('current-skin', '/ehr-webapp/resources/mower/20150902085904/admin/mower/1.1.1/css/gray.css', 1);
 });

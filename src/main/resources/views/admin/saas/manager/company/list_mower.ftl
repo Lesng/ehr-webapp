@@ -41,7 +41,7 @@
 			</div>
 			<div class="col-xs-12 col-md-offset-2 col-md-4">
 				<div class="input-group">
-					<input type="text" class="form-control" id="search-text-${code}">
+					<input type="text" class="form-control" id="search-text-${code}" placeholder="请输入关键字搜索" />
 					<span class="input-group-addon" id="search-btn-${code}"><i class="fa fa-search"></i></span>
 	            </div>
             </div>

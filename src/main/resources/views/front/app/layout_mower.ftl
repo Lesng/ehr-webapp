@@ -66,3 +66,48 @@ ddddadf
 </#global>
 -->
 
+<#global mower_front_head_addition>
+	<link rel="stylesheet" href="${resources_front}/mower/${mowerVersion}/css/gray${minVersion!""}.css"/>
+</#global>
+
+<#macro mower_front_header_login responsive=''>
+	<div class="navbar" role="navigation">
+            <div class="navbar-inner">
+                <div class="navbar-container">
+                    <!-- Navbar Barnd -->
+                    <div class="navbar-header pull-left">
+				        <div class="<#if responsive == 'yes'>col-md-3 col-xs-6 hidden-xs<#else>col-xs-6</#if>">
+				            <img src="${resources_front}/app/images/9_logo.png" height="45" alt="天奕咨询">
+				        </div>
+                    </div>
+                    <!-- /Navbar Barnd -->
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#"><i class="fa fa-cogs"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-lock"></i></a>
+                        </li>
+                        <li><a href="<@macula.logoutURL />&forward=/front"><i class="fa fa-times"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</#macro>
+
+<#macro mower_front_header_logo responsive=''>
+</#macro>
+
+<#macro mower_front_header_menu responsive=''>
+
+</#macro>
+
+<#macro mower_front_footer>
+    <!-- BEGIN FOOTER -->
+    <div id="footer" class="mu-footer-container" style="text-align:center">
+        <div class="container-fluid">
+            <p>&copy; 2015 <a href="http://www.tenoner.net" target="_blank">天奕咨询</a>
+            </p>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+</#macro>

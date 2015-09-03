@@ -13,6 +13,34 @@
 包含的Javascript(angularjs,knockoutjs,datagrid)
 <#macro mower_admin_scripts require = ''>
 -->
+<#macro mower_admin_header_login>
+    <!-- Account Area and Settings -->
+    <div class="navbar-header pull-right">
+        <div class="navbar-account">
+            <ul class="account-area">
+                <li>
+                    <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                        <section>
+                            <h2><span class="profile">${request.getUserPrincipal().getPrincipal().getNickname()}</span></h2>
+                        </section>
+                    </a>
+                    <!--Login Area Dropdown-->
+                    <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                        <li class="username">
+                        	<a>&nbsp;</a>
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="<@macula.logoutURL />&forward=/login">退出</a>
+                        </li>
+                    </ul>
+                    <!--/Login Area Dropdown-->
+                </li>
+                <!-- /Account Area -->
+            </ul>
+        </div>
+    </div>
+    <!-- /Account Area and Settings -->
+</#macro>
 <#macro mower_admin_header_menu>
 	<div  class="header-menu yamm">
 		<ul class="nav navbar-nav" data-url="${base}/admin/menu/${sessionId!'session'}" rel="nbMenu">
@@ -26,7 +54,7 @@
 </#macro>
 <#macro mower_admin_footer>
     <!-- BEGIN FOOTER -->
-    <div id="footer" class="mu-footer-container" style="text-align:right">
+    <div id="footer" class="mu-footer-container" style="text-align:center">
         <div class="container-fluid">
             <p>&copy; 2015 <a href="http://www.tenoner.net" target="_blank">天奕咨询</a>
             </p>

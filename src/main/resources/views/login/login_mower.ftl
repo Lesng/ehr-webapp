@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macula Framework</title>
+    <title>竞自由绩效考核系统登录</title>
     
     <link rel="icon" href="${resources_login}/app/images/favicon.ico" type="image/x-icon"/>
     <#-- BEGIN GLOBAL MANDATORY STYLES -->
@@ -55,7 +55,7 @@
         	<div class="row">
             	<div class="col-xs-12 col-sm-12 col-md-12">
                 	<a href="${base}">
-                    	<img src="${resources_login}/app/images/logo-fp.png" style="width: 123px;height: 81px;" alt="tenoner">
+                    	<img src="${resources_login}/app/images/logo-fp.png" alt="tenoner" />
                 	</a>
                 	<b class="welcome"></b>
             	</div>
