@@ -7,12 +7,8 @@
  * Copyright (c) 2015 Infinitus, Inc.
  * Licensed under Apache License 2.0 (https://github.com/macula-projects/mower/blob/master/LICENSE)
  */
-body {
+body.ehr-front {
 	font-family: "微软雅黑" !important;
-}
-
-.ehr-front .mu-header, .ehr-front .mu-header-navbar {
-	margin-top: 0;
 }
 
 .ehr-front .mu-header-container .navbar .navbar-inner, .ehr-front .mu-header-container .navbar .navbar-brand
@@ -20,14 +16,46 @@ body {
 	background: whitesmoke;
 }
 
-.ehr-front .navbar-nav>li>a>i {
-	font-size: 28px;
+.ehr-front .mu-content-wrapper, .ehr-front .mu-header-container,
+	.ehr-front .mu-sidebar:before {
+	background: whitesmoke;
+}
+
+/** Head CSS **/
+.ehr-front .mu-header, .ehr-front .mu-header-navbar {
+	margin-top: 0;
+}
+
+/** End Head CSS **/
+
+/** Sidebar CSS **/
+.ehr-front .mu-sidebar {
+	width: 180px;
+}
+
+.ehr-front .mu-sidebar:before {
+	top: 1px;
+	left: 0;
+	width: auto;
 }
 
 .mu-sidebar .sidebar-header-wrapper {
 	height: 240px !important;
 }
 
+.ehr-front .mu-sidebar .sidebar-menu li.active>a {
+	background-color: #fff;
+}
+
+.ehr-front .mu-sidebar .navbar-nav>li>a>i {
+	font-size: 28px;
+}
+
+.ehr-front  .mu-sidebar .sidebar-menu>li>a {
+	padding-left: 60px;
+}
+
+/** Side User Info CSS **/
 .ehr-front   .sidebar-header-profile {
 	position: absolute;
 	top: 0;
@@ -84,47 +112,10 @@ body {
 	text-align: center;
 }
 
-.ehr-front  .mu-sidebar .sidebar-menu>li>a {
-	padding-left: 60px;
-}
+/** End Side User Info CSS */
 
-.ehr-front   .mu-content-body {
-	/** padding: 30px 40px; **/
-	background: #fff;
-}
 
-.ehr-front .mu-content-wrapper, .ehr-front .mu-header-container,
-	.ehr-front .mu-sidebar:before {
-	background: whitesmoke;
-}
-
-.ehr-front .mu-footer-container {
-	background: white;
-}
-
-.ehr-front body:before {
-	background-color: white;
-}
-
-.ehr-front .mu-sidebar {
-	width: 180px;
-}
-
-.ehr-front .mu-content {
-	margin-left: 180px;
-}
-
-.mu-sidebar:before {
-	top: 1px;
-	left: 0;
-	width: auto;
-}
-
-.mu-main-container {
-	padding-top: 1px;
-	background-color: white;
-}
-
+/** Step CSS **/
 .performance-progress {
 	position: relative;
 	padding: 30px 15px 15px 45px;
@@ -159,10 +150,252 @@ body {
 	margin-right: 10px;
 }
 
-.mu-sidebar .sidebar-menu li.active>a {
+/** End Step CSS **/
+
+/** Big Step CSS **/
+.ehr-front .form-wizard .nav.steps-task > li > a {
+     padding: 0 !important;
+     margin-right: 20px;
+     -webkit-border-radius: 5px !important;
+     -moz-border-radius: 5px !important;
+     border-radius: 5px !important;
+}
+.ehr-front  .form-wizard .steps {
+	padding: 10px 0;
 	background-color: #fff;
+	background-image: none;
+	filter: none;
+	border: 0px;
+	box-shadow: none;
 }
 
+.ehr-front .form-wizard .steps>li>a.step {
+	background-color: #fff;
+	background-image: none;
+	filter: none;
+	border: 0px;
+	box-shadow: none;
+}
+
+.ehr-front  .form-wizard .steps>li>a.step:hover {
+	background: none;
+}
+
+.ehr-front .form-wizard .steps>li>a.step>.number {
+	background-color: #eee;
+	display: inline-block;
+	text-align: center !important;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 11px 15px 13px 15px;
+	margin-right: 10px;
+	height: 45px;
+	width: 45px;
+	-webkit-border-radius: 50% !important;
+	-moz-border-radius: 50% !important;
+	border-radius: 50% !important;
+}
+
+.ehr-front  .form-wizard .steps>li>a.step>.desc {
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.ehr-front  .form-wizard .steps>li>a.step>.desc>i {
+	display: none;
+}
+
+.ehr-front  .form-wizard .steps>li.active>a.step .number {
+	background-color: #45B6AF;
+	color: #fff;
+}
+
+.ehr-front  .form-wizard .steps>li.active>a.step .desc {
+	color: #333;
+}
+
+.ehr-front .form-wizard .steps>li.done>a.step .number {
+	background-color: #dfba49;
+	color: #fff;
+}
+
+.ehr-front  .form-wizard .steps>li.done>a.step .desc {
+	color: #333;
+}
+
+.ehr-front .form-wizard .steps>li.done>a.step .desc i {
+	font-size: 12px;
+	font-weight: normal;
+	color: #999;
+	display: inline-block;
+}
+
+@media ( min-width : 768px) and (max-width: 1200px) {
+	/* 768px & 1200px */
+	.ehr-front       .form-wizard .step .desc {
+		margin-top: 10px;
+		display: block;
+	}
+}
+
+@media ( max-width : 768px) {
+	/* 768px */
+	.ehr-front    .form-wizard .steps>li>a {
+		text-align: left;
+	}
+}
+
+.ehr-front    .dashboard-stat {
+	display: block;
+	overflow: hidden;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	padding: 20px;
+}
+
+.ehr-front  .dashboard-stat:before, .ehr-front   .dashboard-stat:after {
+	content: " ";
+	display: table;
+}
+
+.ehr-front   .dashboard-stat:after {
+	clear: both;
+}
+
+.ehr-front   .dashboard-stat .visual {
+	width: 60px;
+	height: 80px;
+	display: block;
+	float: left;
+	padding-left: 15px;
+	margin-bottom: 10px;
+	font-size: 35px;
+	line-height: 35px;
+}
+
+.ehr-front    .dashboard-stat .visual>i {
+	margin-left: -20px;
+	font-size: 80px;
+	line-height: 80px;
+}
+
+.ehr-front   .dashboard-stat .details {
+	position: absolute;
+	right: 0px;
+	padding-right: 15px;
+}
+
+.ehr-front    .dashboard-stat .details .number {
+	padding-top: 15px;
+	font-size: 34px;
+	line-height: 36px;
+	letter-spacing: -1px;
+	margin-bottom: 0px;
+	font-weight: 300;
+}
+
+.ehr-front  .dashboard-stat .details .desc {
+	text-align: right;
+	font-size: 16px;
+	letter-spacing: 0px;
+	font-weight: 300;
+}
+
+.ehr-front   .dashboard-stat .more {
+	clear: both;
+	display: block;
+	padding: 6px 10px 6px 10px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 11px;
+	opacity: 0.7;
+	filter: alpha(opacity = 70);
+}
+
+.ehr-front  .dashboard-stat .more:hover {
+	text-decoration: none;
+	opacity: 0.9;
+	filter: alpha(opacity = 90);
+}
+
+.ehr-front   .dashboard-stat .more>i {
+	display: inline-block;
+	margin-top: 1px;
+	float: right;
+}
+
+.ehr-front  .dashboard-stat-light {
+	padding-bottom: 20px;
+	/** margin-bottom: 20px; **/
+}
+.ehr-front .panel-widget.light {
+	padding-top: 0;
+	padding-bottom: 0px;
+}
+
+.ehr-front .panel-widget.light >.panel-heading {
+	margin-bottom: 0;
+	min-height : 10px;
+}
+
+.ehr-front   .dashboard-stat-light .details {
+	margin-bottom: 5px;
+}
+
+.ehr-front    .dashboard-stat-light .details .number {
+	font-weight: 300;
+	margin-bottom: 0px;
+}
+
+.ehr-front    .dashboard-stat.blue-soft {
+	background-color: #4c87b9;
+}
+
+.ehr-front   .dashboard-stat.blue-soft.dashboard-stat-light:hover {
+	background-color: #447dad;
+}
+
+.ehr-front   .dashboard-stat.blue-soft .visual>i {
+	color: #FFFFFF;
+	opacity: 0.1;
+	filter: alpha(opacity = 10);
+}
+
+.ehr-front   .dashboard-stat.blue-soft .details .number {
+	color: #FFFFFF;
+}
+
+.ehr-front .dashboard-stat.blue-soft .details .desc {
+	color: #FFFFFF;
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+
+.ehr-front  .dashboard-stat.blue-soft .more {
+	color: #FFFFFF;
+	background-color: #447dad;
+}
+/** End Big Step CSS **/
+
+/** Main Content CSS **/
+.ehr-front .mu-main-container {
+	padding-top: 1px;
+	background-color: white;
+}
+
+.ehr-front .mu-content {
+	margin-left: 180px;
+}
+.ehr-front   .mu-content-body {
+	background: #fff;
+}
+/** End Main Content CSS **/
+
+/** List Table CSS **/
 .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th,
 	.table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td,
 	.table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
@@ -173,3 +406,4 @@ body {
 	.table>tbody>tr>td, .table>tfoot>tr>td {
 	padding: 4.5px;
 }
+/** End List Table CSS **/

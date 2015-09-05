@@ -1,11 +1,13 @@
 package net.tenoner.ehr.saas.domain;
 
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
 import org.macula.core.domain.AbstractAuditable;
 import org.macula.core.validation.Length2;
 
+@MappedSuperclass
 public abstract class AbstractCompanyDomain extends AbstractAuditable<Long> {
 
 	private static final long serialVersionUID = 1L;

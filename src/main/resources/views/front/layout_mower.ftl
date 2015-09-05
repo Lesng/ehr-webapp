@@ -184,7 +184,17 @@
 	<script type="text/javascript" src="${resources_front}/mvc/knockoutjs/${knockoutMappingVersion}/knockout.mapping${minVersion!""}.js"></script>
 	</#if>
 	<!-- END MVC LIBRARY -->
-
+	
+	<!-- Flot LIBRARY -->
+	<#if require?contains('flot')>
+	<script type="text/javascript" src="${resources_front}/libs/flot/1.1.0/jquery.flot${minVersion!""}.js"></script>
+	<script type="text/javascript" src="${resources_front}/libs/flot/1.1.0/jquery.flot.selection${minVersion!""}.js"></script>
+	<script type="text/javascript" src="${resources_front}/libs/flot/1.1.0/jquery.flot.resize${minVersion!""}.js"></script>
+	<script type="text/javascript" src="${resources_front}/libs/flot/1.1.0/jquery.flot.tooltip${minVersion!""}.js"></script>
+	<script type="text/javascript" src="${resources_front}/libs/flot/1.1.0/jquery.flot.crosshair${minVersion!""}.js"></script>
+	</#if>
+	<!-- END Flot LIBRARY -->
+	
 	<!-- CUSTOM LIBRARY -->
 	${mower_front_scripts_addition!""}
 	<!-- END CUSTOM LIBRARY -->
