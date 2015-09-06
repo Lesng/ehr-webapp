@@ -40950,7 +40950,7 @@ if (typeof jQuery === 'undefined') {
 	return $.fn.jstree;
 }));
 ;/*!
- * mower - v1.1.1 - 2015-08-27
+ * mower - v1.1.1 - 2015-09-06
  * Copyright (c) 2015 Infinitus, Inc.
  * Licensed under Apache License 2.0 (https://github.com/macula-projects/mower/blob/master/LICENSE)
  */
@@ -41423,7 +41423,7 @@ Number.prototype.split = function() {
             $(document).triggerHandler('update', self);
 
             //update javascript 
-            $.merge($html.filter('script'), $html.find('script')).each(function() {
+            $.merge($html.find('script'),$html.filter('script')).each(function() {
                 var $script = $(this);
                 var id = $script.attr('id');
                 if (id) {
@@ -43854,13 +43854,13 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
                 var pageData = {};
 
                 if (settings.oFeatures.bPaginate === true) {
-                    var pageNumber = (data.start === 0 ? 1 : Math.ceil(data.start / data.length));
+                    var pageNumber = ((data.start % data.length) === 0 ? paserInt(data.start / data.length) : Math.floor(data.start / data.length));
                     pageData = {
                         rows: data.length,
                         page: pageNumber
                     };
 
-                    settings.iDisplayStart = (pageNumber - 1) * data.length;
+                    settings.iDisplayStart = pageNumber  * data.length;
                 }
 
                 //process only one column
@@ -44767,6 +44767,7 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
 
     var backdrop = '.dropdownquery-backdrop';
     var toggle = '[data-toggle="dropdownquery"]';
+    var displayKey = "label";
     var ddqKey = 'dropdownquery';
 
     var specialKeyCodeMap;
@@ -44813,11 +44814,13 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
         var $ul = $('<ul class="dropdown-menu" role="menu"></ul>');
         var data = this.options.source;
 
-        if ($.isArray(data) && data.length > 0) {
+        if($.isFunction(data)){
+            data = utils.executeFunction(data);
+        } else if ($.isArray(data) && data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 var $li;
                 if ($.isPlainObject(data[i])) {
-                    var key = this.options.displayKey;
+                    var key = this.options.displayKey || displayKey;
                     if (key) {
                         $li = $('<li role="presentation"><a role="menuitem" tabindex="-1" href="#">' + data[i][key] + '</a></li>');
                     }
@@ -44881,7 +44884,7 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
         $.each($items, function(index, val) {
             var newtext;
             if ($.isPlainObject($(this).data(ddqKey))) {
-                var key = that.options.displayKey;
+                var key = that.options.displayKey || displayKey;
                 if (key) {
                     newtext = $(this).data(ddqKey)[key] + " : " + inputValue;
                 }
@@ -45231,19 +45234,19 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
             this.options.realField = this.options.realField || this.options.codeField;
 
             this.$input = this.$element.find('.form-control:first');
-            this.$component = this.$element.is('.mu-dropdowntable') ? this.$element.find('.add-on, .input-group-addon, .btn') : false;
+            this.$component = this.$element.is('.mu-dropdowntable') ? this.$element.find('.input-group-btn') : false;
             this.$tableContainer = $(DropDownTable.DEFAULTS.template);
 
             if (this.options.width && this.options.width !== 'auto') {
-                this.$tableContainer.attr('width',this.options.width);
+                this.$tableContainer.css('width', this.options.width);
             }
 
             this.$table = this.$tableContainer.find('table:first');
 
             if (this.options.height && this.options.height !== 'auto') {
-                this.$table.attr('data-scrollY', this.options.height + 'px');
-             }
-            
+                this.$table.attr('data-scrollX', false);
+                this.$table.attr('data-scrollY', this.options.height);
+            }
 
             this._process_options();
             this._buildEvents();
@@ -45428,12 +45431,12 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
 
             return existed;
         },
-        _resize: function() {
-            // var width = this.$element.outerWidth(true);
-            // this.$tableContainer.css('width', width);
+        // _resize: function() {
+        //     var width = this.$element.outerWidth(true);
+        //     this.$tableContainer.css('width', this.options.width);
 
-            // this.$table.DataTable().adjustColumn();
-        },
+        //     this.$table.DataTable().adjustColumn();
+        // },
         construct: function() {
             //make columns
             var columns = this.options.columns;
@@ -45780,16 +45783,16 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
             this.options = $.extend({}, DropDownTree.DEFAULTS, $element.data(), typeof options === 'object' && options);
 
             this.$input = this.$element.find('.form-control:first');
-            this.$component = this.$element.is('.mu-dropdowntree') ? this.$element.find('.add-on, .input-group-addon, .btn') : false;
+            this.$component = this.$element.is('.mu-dropdowntree') ? this.$element.find('.input-group-btn') : false;
             this.$treeContainer = $(DropDownTree.DEFAULTS.template);
             this.$treeContainer.append('<div></div');
             if (this.options.width && this.options.width !== 'auto') {
-                this.$treeContainer.attr('width', this.options.width);
+                this.$treeContainer.css('width', this.options.width);
             }
 
             this.$tree = this.$treeContainer.find('div:first');
             if (this.options.height && this.options.height !== 'auto') {
-                this.$tree.css('height', this.options.height + 'px');
+                this.$tree.css('height', this.options.height);
                 this.$tree.css('overflow', 'auto');
             }
 
@@ -46322,6 +46325,8 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
         height: 'auto',
         multiple: false,
         separator: ',',
+        codeField:'code',
+        labelField:'label',
         template: '<div class="dropdown-menu"></div>'
     };
 
@@ -46336,7 +46341,7 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
         this.$lkContainer.append('<div></div');
         this.$lkContent = this.$lkContainer.find('div:first');
 
-        $element.find(toggledropdown).after(this.$lkContainer);
+        $element.prepend(this.$lkContainer);
 
         this._parseOptions();
         this._constructContent();
@@ -46371,6 +46376,8 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
                 }
             }
         }
+
+        this.options.name = this.options.name || this.options.codeField;
     };
 
     Lookup.prototype._constructContent = function() {
@@ -46488,7 +46495,7 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
         }
     };
 
-    //value contains item = {label:"xxxx",value:"xxxxx"} or item = {value}
+    //value contains item = {label:"xxxx",code:"xxxxx"} or item = {value}
     Lookup.prototype.setValue = function(value) {
         var labels = [];
 
@@ -46496,11 +46503,12 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
             for (var i = 0; i < value.length; i++) {
                 var item = value[i];
                 if (typeof item === 'object') {
-                    if (item.value && !this._isExisted(item.value)) {
-                        this.$input.after('<input class="_value" type="hidden" name="' + this.options.name + '" value="' + item.value + '"/>');
+                    var code = item[this.options.codeField];
+                    if (code  && !this._isExisted(code)) {
+                        this.$input.after('<input class="_value" type="hidden" name="' + this.options.name + '" value="' + code + '"/>');
                     }
 
-                    item.text && labels.push(item.text);
+                    item[this.options.labelField] && labels.push(item[this.options.labelField]);
                 } else {
                     if (!this._isExisted(item)) {
                         this.$input.after('<input class="_value" type="hidden" name="' + this.options.name + '" value="' + item + '"/>');
@@ -46515,6 +46523,11 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
         }
 
         this.$input.val(labels.join(this.options.separator));
+    };
+
+    Lookup.prototype.clear = function() {
+        this.$element.find('._value').remove();
+        this.$input.val('');
     };
 
     Lookup.prototype.toggleDropdown = function(e) {
@@ -47601,7 +47614,7 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
     //you can put your plugin defaults in here.
     VMMenu.DEFAULTS = {
         url: '', //ajax url
-        isAlwaysShown: 'false',
+        isAlwaysShown: false,
         param: '{}', //data to be sent to the server.
         method: 'GET', // data sending method
         dataType: 'json', // type of data loaded
@@ -47631,7 +47644,7 @@ var DTAdapter = (function(base, utils, $, window, document, undefined) {
 
             this.options.param = json.decode(this.options.param || '{}');
 
-            if (this.options.isAlwaysShown === 'true') {
+            if (this.options.isAlwaysShown == true) {
                 this.populate();
                 $element.closest('li.dropdown').addClass('open');
             } else {
