@@ -15,8 +15,7 @@
     limitations under the License.
 
 -->
-<@layout.mower_front title="合约制定列表" scripts="front/saas/manager/contract/list_mower.js" version="[$Revision: 4511 $]" require="knockoutjs">
-	<#assign code="contract-list" />
+<#global SetCustomContent>
 	<div class="row step-container">
 		<div class="col-md-6 fuelux">
 			<div class="panel panel-default">
@@ -51,6 +50,9 @@
 	        <button type="button" class="btn btn-lg btn-darkorange" style="font-size: 32px;padding: 10px 40px;">合约查看</button>
 	    </div>
 	</div>
+</#global>
+<@layout.mower_front title="合约制定列表" scripts="front/saas/manager/contract/list_mower.js" version="[$Revision: 4511 $]" require="knockoutjs">
+	<#assign code="contract-list" />
 	<@ui.panel>
 		<@ui.panel_head>
 			<div id="actions-list-${code}" class="col-xs-12 col-md-6">

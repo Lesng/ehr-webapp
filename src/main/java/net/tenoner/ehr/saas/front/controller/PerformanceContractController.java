@@ -50,20 +50,20 @@ public class PerformanceContractController extends FrontSaasManagerController {
 
 	@RequestMapping(value = "/contract/get/{id}", method = RequestMethod.GET)
 	@OpenApi
-	public PerformanceContract getPerformanceContract(@PathVariable("id") PerformanceContract company) {
-		if (company == null) {
-			company = new PerformanceContract();
+	public PerformanceContract getPerformanceContract(@PathVariable("id") PerformanceContract contract) {
+		if (contract == null) {
+			contract = new PerformanceContract();
 		}
-		return company;
+		return contract;
 	}
 
 	@RequestMapping(value = "/contract/save", method = RequestMethod.POST)
 	@OpenApi
-	public Long save(@FormBean("company") @Valid PerformanceContract company) {
+	public Long save(@FormBean("contract") @Valid PerformanceContract contract) {
 		if (hasErrors()) {
 			throw new FormBindException(getMergedBindingResults());
 		}
-		return performanceContractService.savePerformanceContract(company);
+		return performanceContractService.savePerformanceContract(contract);
 	}
 
 	@RequestMapping(value = "/contract/delete/{id}", method = RequestMethod.POST)

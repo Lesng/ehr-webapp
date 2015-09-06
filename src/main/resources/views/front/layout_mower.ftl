@@ -286,6 +286,18 @@
 		<!-- BEGIN CONTENT -->
 		<div class="mu-content-wrapper">
 		    <div class="mu-content">
+		        <!-- BEGIN BREADCRUMB -->
+                <div class="mu-content-header" style="display:none">
+                    <div class="mu-breadcrumb-wrapper">
+                        <ul class="breadcrumb" data-target="#mainContent">
+                            <li data-target="breadcrumb0" class="active"></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END BREADCRUMB-->
+                <div class="mu-content-body">
+                  ${SetCustomContent!""}
+                </div>
 		        <div class="mu-content-body">
 		            <div class="row">
 		                <div class="col-md-12">

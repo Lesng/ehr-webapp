@@ -1,5 +1,5 @@
-var RegistedCompanyForm = (function($) {
-	var code = 'edit-company', parentCode = 'company-list', $form = $('#form-' + code);
+var PerformanceContractForm = (function($) {
+	var code = 'edit-contract', parentCode = 'contract-list', $form = $('#form-' + code);
 
 	var viewModel = function(data) {
 		var self = this;
@@ -24,6 +24,7 @@ var RegistedCompanyForm = (function($) {
 			$('#save-action-' + code).click(function(e) {
 				var that = $(this);
 				$form.ajaxValidSubmit({
+					errorContainer: '#form-' + code,
 					success : function(data) {
 						MessageBox.success('保存成功');
 						that.trigger('pop.mu.breadcrumb');
@@ -38,5 +39,5 @@ var RegistedCompanyForm = (function($) {
 }(jQuery));
 
 $(function() {
-	RegistedCompanyForm.init();
+	PerformanceContractForm.init();
 });
