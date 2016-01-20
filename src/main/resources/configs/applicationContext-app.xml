@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2010-2012 the original author or authors. Licensed under the 
-	Apache License, Version 2.0 (the "License"); you may not use this file except 
-	in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
-	Unless required by applicable law or agreed to in writing, software distributed 
-	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-	the specific language governing permissions and limitations under the License. -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+<!-- Copyright 2010-2012 the original author or authors. Licensed under the Apache License, Version 2.0 (the "License"); 
+	you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS 
+	IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language 
+	governing permissions and limitations under the License. -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
@@ -21,17 +18,13 @@
 	<import resource="classpath*:/META-INF/spring/macula-*-app.xml" />
 	<import resource="classpath*:/META-INF/spring/ehr-*-app.xml" />
 
-	<bean id="abstractEntityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+	<bean id="abstractEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		abstract="true">
 		<property name="jpaVendorAdapter">
 			<bean class="org.macula.core.hibernate.HibernateJpaVendorAdapter">
-				<property name="database"
-					value="#{T(org.macula.Configuration).getDatabase()}" />
-				<property name="showSql"
-					value="#{T(org.macula.Configuration).getShowSql()}" />
-				<property name="generateDdl"
-					value="#{T(org.macula.Configuration).getGenerateDdl()}" />
+				<property name="database" value="#{T(org.macula.Configuration).getDatabase()}" />
+				<property name="showSql" value="#{T(org.macula.Configuration).getShowSql()}" />
+				<property name="generateDdl" value="#{T(org.macula.Configuration).getGenerateDdl()}" />
 			</bean>
 		</property>
 		<property name="jpaProperties">
@@ -47,8 +40,7 @@
 	<!-- Macula Entity Manager -->
 	<bean id="entityManagerFactory_macula" parent="abstractEntityManagerFactory">
 		<property name="persistenceUnitManager">
-			<bean
-				class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+			<bean class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
 				<property name="defaultPersistenceUnitName">
 					<value>macula</value>
 				</property>
@@ -57,8 +49,8 @@
 					<array>
 						<!-- macula framework domains -->
 						<value>org.macula.base.app.domain</value>
-						<value>org.macula.base.security.domain</value>
 						<value>org.macula.base.data.domain</value>
+						<value>org.macula.base.acl.domain</value>
 						<value>org.macula.plugins.rule.domain</value>
 						<!-- EHR domains -->
 						<value>net.tenoner.ehr.saas.domain</value>
@@ -70,8 +62,7 @@
 	</bean>
 
 	<bean id="transactionManager_macula" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory"
-			ref="#{T(org.macula.Configuration).getEntityManagerFactoryName()}" />
+		<property name="entityManagerFactory" ref="#{T(org.macula.Configuration).getEntityManagerFactoryName()}" />
 	</bean>
 
 	<alias name="transactionManager_macula" alias="transactionManager" />
@@ -82,8 +73,7 @@
 	<aop:config>
 		<aop:pointcut id="maculaPointcut"
 			expression="execution(* org.macula..*.*(..)) and !execution(* org.macula.samples..*.*(..)) and @within(org.springframework.stereotype.Service)" />
-		<aop:pointcut id="maculaEhrPointcut"
-			expression="execution(* net.tenoner..*.*(..)) and @within(org.springframework.stereotype.Service)" />
+		<aop:pointcut id="maculaEhrPointcut" expression="execution(* net.tenoner..*.*(..)) and @within(org.springframework.stereotype.Service)" />
 		<aop:advisor advice-ref="maculaTxAdvise" pointcut-ref="maculaPointcut" />
 		<aop:advisor advice-ref="maculaTxAdvise" pointcut-ref="maculaEhrPointcut" />
 	</aop:config>
@@ -94,8 +84,7 @@
 	</bean>
 
 	<!-- i18n resources -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
 				<!-- Macula Messages -->

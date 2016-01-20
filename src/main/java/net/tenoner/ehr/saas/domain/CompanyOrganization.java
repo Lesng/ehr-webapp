@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.macula.base.security.domain.Organization;
+import org.macula.base.acl.domain.Organization;
 import org.macula.core.hibernate.audit.Auditable;
 import org.macula.core.validation.Length2;
 
